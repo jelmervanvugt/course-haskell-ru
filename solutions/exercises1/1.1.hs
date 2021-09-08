@@ -1,6 +1,6 @@
 {-
     i prevented 0 and negative seat numbers
-    bug: for some reason the newlines arent being printed correctly
+    TODO: for some reason the newlines arent being printed correctly
 -}
 
 lyrics :: Integer -> String
