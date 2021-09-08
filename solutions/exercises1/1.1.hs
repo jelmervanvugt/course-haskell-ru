@@ -19,3 +19,5 @@ song = lyrics (-5)
 
 main = putStr("output of fn \n" ++ song)
 
+
+
