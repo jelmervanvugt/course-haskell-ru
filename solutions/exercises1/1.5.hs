@@ -4,11 +4,10 @@ type FavouriteCourse  = String
 
 type Person           = (Name, Age, FavouriteCourse)
 
--- TODO: ff je eigen favo course toevoegen ;)
 elena, peter, pol :: Person
 elena   = ("Elena", 33, "Functional Programming")
 peter   = ("Peter", 33, "Imperative Programming")
-pol     = ("Pol", 36, "Object Oriented Programming")
+pol     = ("Pol", 36, "Quantum Field Theory")
 
 -- 1
 jelmer  = ("Jelmer", 4, "The Main Course")
@@ -39,13 +38,25 @@ twins p1 p2
 
 -- 5
 increaseAge :: Person -> Person
-// TODO verder implementeren
+increaseAge p = (name p, (age p) + 1, favouriteCourse p)
 
+--6
 -- Testing of functions can be done by calling main in GHCi paired with the right function
 -- !! n gets the Nth value in the list, in this case the first one
 
+{- increment the age of all students by two -}
+-- (map increaseAge (map increaseAge students))
+
+{- promote all of the students -}
+-- map promote students
+
+{- find all students named Frits -}
+-- let isFrits p = (name p) == "Frits" in filter isFrits students
+
+{- find all students who are in their twenties -}
+-- let inTwenties p = (age p) >= 20 && (age p) < 30 in filter inTwenties students
+
 --main = putStr (favouriteCourse(students !! 0))
-main = putStr (show (twins elena peter))
 
 
 
