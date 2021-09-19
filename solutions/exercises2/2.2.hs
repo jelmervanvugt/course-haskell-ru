@@ -11,11 +11,13 @@ f3 :: Char -> Char
 f3 ' ' = '_'
 f3 c = c
 
+ -- Because of the outcome of f1 i would think: [Char] -> [Char] -> [Char], but it is: String -> String -> String
 f4 :: String -> String -> String
 f4 x y
  | x == "" = y
  | otherwise = x
 
+-- How does Haskell know x and y are of the same type?
 f5 :: Bool -> b -> b -> (b, b)
 f5 b x y = if b then (x,y) else (y,x)
 
