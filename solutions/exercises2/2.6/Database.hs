@@ -1,35 +1,21 @@
-type Name             = String
-type Age              = Integer
-type FavouriteCourse  = String
-
-type Person           = (Name, Age, FavouriteCourse)
+data Person = Person { name::String, age::Integer, favouriteCourse::String }
 
 elena, peter, pol, frits :: Person
-elena   = ("Elena", 33, "Functional Programming")
-peter   = ("Peter", 33, "Imperative Programming")
-pol     = ("Pol", 36, "Quantum Field Theory")
-frits   = ("Frits", 38, "Operating Systems")
+elena   = Person {name="Elena", age=33, favouriteCourse="Functional Programming"}
+peter   = Person {name="Peter", age=33, favouriteCourse="Imperative Programming"}
+pol     = Person {name="Pol",   age=36, favouriteCourse="Quantum Field Theory"}
+frits   = Person {name="Frits", age=38, favouriteCourse="Operating Systems"}
 
 -- 1
-jelmer  = ("Jelmer", 4, "The Main Course")
-eric    = ("Eric", 42, "Yet unknown")
+jelmer  = Person {name="Jelmer", age=4,  favouriteCourse="The Main Course"}
+et    = Person {name="Eric",   age=42, favouriteCourse="Quantum Field Theory"}
 
 students :: [Person]
-students = [elena, peter, pol, frits, jelmer, eric]
-
--- 2
-age :: Person -> Age
-age (_, n, _) = n
-
-name :: Person -> Name
-name (n, _, _) = n
-
-favouriteCourse :: Person -> FavouriteCourse
-favouriteCourse (_, _, c) = c
+students = [elena, peter, pol, frits, jelmer, et]
 
 -- 3
 showPerson :: Person -> String
-showPerson p  = "Name: " ++ name p ++ " \n Age: " ++ show (age p) ++ " \n Favourite Course: " ++ favouriteCourse p
+showPerson p  = "Name: " ++ name p ++ " \n Age: " ++ show (age p) ++ " \n Favourite Course: " ++  favouriteCourse p
 
 -- 4
 twins :: Person -> Person -> Bool
@@ -39,7 +25,7 @@ twins p1 p2
 
 -- 5
 increaseAge :: Person -> Person
-increaseAge p = (name p, (age p) + 1, favouriteCourse p)
+increaseAge p = Person {name=(name p), age=((age p) + 1), favouriteCourse=(favouriteCourse p)}
 
 --6
 -- Testing of functions can be done by calling main in GHCi paired with the right function
@@ -52,7 +38,7 @@ increaseAge p = (name p, (age p) + 1, favouriteCourse p)
 
 {- promote all of the students -}
 promote :: Person -> Person
-promote p = (("dr. " ++ name p), age p, favouriteCourse p)
+promote p = Person {name=("dr. " ++ name p), age=(age p), favouriteCourse=(favouriteCourse p)}
 -- map promote students
 
 {- find all students named Frits -}
@@ -70,7 +56,3 @@ promoteIfFavourite s =
     if fpFav then promote s else s
     where fpFav = favouriteCourse s == "Functional Programming"
 --main = putStr(show (map promoteIfFavourite students))
-
-
-
-
