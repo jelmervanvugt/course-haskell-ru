@@ -19,7 +19,7 @@ f11 x y = get 0
   
     - f8 is ad hoc polymorphic. It only works for types which are comparable (Ord).
     - f9 is not polymorphic. It only works for Boolean types.
-    - f10 is ??
+    - f10 is ad hoc polymorpohic. It works for types that have equality testing (Eq).
     - f11 is parametric polymorphic.
 
 -}

@@ -16,8 +16,8 @@ pow2 n
     Max. value Float in Haskell     : 1.7976931348623158 E + 308
     Max. value Double in Haskell    : 1.7976931348623158 E + 308
 
-    Int can hold a max. of          : 2^31
+    Int can hold a max. of          : 2^62 (2^63 is negative)
     Integer can hold a max. of      : Infinity
-    Float can hold a max. of        : ?
-    Double can hold amax. of        : ?
+    Float can hold a max. of        : 2^127
+    Double can hold a max. of       : 2^1023
 -}
