@@ -1,4 +1,4 @@
-uniq :: (Eq a) => [a] -> [a]    
+uniq :: (Eq a) => [a] -> [a]  
 
 uniq [] = [];
 uniq [x] = [x];
