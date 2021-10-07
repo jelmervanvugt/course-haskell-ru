@@ -31,7 +31,14 @@ insert a (Node x y z)
 -- fromList :: (Ord a) => [a] -> Tree a
 
 
---delete :: (Ord a) => a -> Tree a -> Tree a
+
+-- delete :: (Ord a) => a -> Tree a -> Tree a
+
+minValue :: Tree a -> a 
+minValue (Node a b c)
+  | b /= Leaf = minValue b 
+  | otherwise = Node b Leaf Leaf
+
 
 
 {----------- exercise 4.5 -------------}
