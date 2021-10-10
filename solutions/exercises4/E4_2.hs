@@ -1,6 +1,6 @@
-module FDOT2 where
+module E4_2 where
 
-import FDOT1
+import E4_1
 
 isWeekend :: Day -> Bool
 isWeekend Sat = True

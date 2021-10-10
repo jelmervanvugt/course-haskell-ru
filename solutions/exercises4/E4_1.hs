@@ -1,4 +1,4 @@
-module FDOT1 where
+module E4_1 where
 
 data Day       = Mon | Tue | Wed | Thu | Fri | Sat | Sun
   deriving Show

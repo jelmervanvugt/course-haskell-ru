@@ -1,4 +1,4 @@
-module FDOT345 where
+module E4_345 where
 
 data Tree a = Leaf | Node a (Tree a) (Tree a)
   deriving Show
@@ -91,18 +91,27 @@ fromAscList x = Node nodeVal (fromAscList (init (fst sections))) (fromAscList (s
         sections = splitAt midPos x
 
 
+ {-------- BFS --------}       
+
 breadthFirst :: Tree a -> [a]
-breadthFirst s = discovered ++ findNeighbours s
- where items = tail (elems test) 
-       discovered = head (elems test)
+breadthFirst Leaf = []
+breadthFirst t = breadthFirst' [t]
 
+breadthFirst' :: [Tree a] -> [a]
+breadthFirst' [] = []
+breadthFirst' t = map treeVal (concatMap isLeaf t) ++ 
+                  breadthFirst' (concatMap findNeighbours t)
 
-findNeighbours :: Tree a -> [a]
+treeVal :: Tree a -> a
+treeVal (Node a b c) = a
+
+findNeighbours :: Tree a -> [Tree a]
 findNeighbours Leaf = []
-findNeighbours (Node a (Node b c d) Leaf) = [b]
-findNeighbours (Node a Leaf (Node b c d)) = [b]
-findNeighbours (Node a (Node b c d) (Node e f g)) = b : [e]
+findNeighbours (Node a b c) = [b, c]
 
+isLeaf :: Tree a -> [Tree a] 
+isLeaf Leaf = []
+isLeaf x = [x]
 
 {- BONUS: a tree pretty printer; the recursive structure of this function
  - is pretty simple, but it is a fiddly function to write if you want it to
@@ -133,3 +142,5 @@ layout tree = go "" ("","","") tree
 putTree :: (Show a) => Tree a -> IO()
 putTree tree = putStr (layout tree)
 -}
+
+
